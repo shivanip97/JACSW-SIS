@@ -1,0 +1,93 @@
+var widths;
+this.Table = {Border:{Width:0.1,Color:''},Fill:{Color:''},TextAlign:"J"}
+this.SetColumns=function(){this.widths=arguments;}
+this.HexToRGB=function(value){
+var ar=new Array()
+s= new String(value.toUpperCase());
+ar["R"] = parseInt(s.substring(0,2),16);
+ar["G"] = parseInt(s.substring(2,4),16);
+ar["B"] = parseInt(s.substring(4,6),16);
+return ar;
+}
+this.Row=function()
+{
+var xdata = arguments
+var xi;var xh;var xnb;
+var xw;
+xnb=0;
+for(xi=0;xi<xdata.length;xi++){xnb=Math.max(xnb,this.NbLines(this.widths[xi],xdata[xi]))};
+xh=(xnb)*5;
+this.CheckPageBreak(xh);
+for(xi=0;xi<xdata.length;xi++)
+{
+xw=this.widths[xi];
+xx=this.GetX();
+xy=this.GetY();
+if (this.Table.Border.Width>0||this.Table.Fill.Color!=''){
+var xstyle='';
+this.SetLineWidth(this.Table.Border.Width);
+if(this.Table.Border.Color!=''){
+var RGB = this.HexToRGB(this.Table.Border.Color);
+this.SetDrawColor(RGB["R"],RGB["G"],RGB["B"]);
+xstyle+='D';
+}
+if(this.Table.Fill.Color!=''){
+var RGB = this.HexToRGB(this.Table.Fill.Color);
+this.SetFillColor(RGB["R"],RGB["G"],RGB["B"]);
+xstyle+="F"
+}
+this.Rect(xx,xy,xw,xh,xstyle);
+}
+this.MultiCell(xw,5,xdata[xi],0,this.Table.TextAlign);
+this.SetXY(xx+xw,xy);
+}
+this.Ln(xh);
+}
+this.CheckPageBreak=function(xh)
+{
+if(this.GetY()+xh>this.PageBreakTrigger)this.AddPage(this.CurOrientation);
+}
+this.NbLines=function(xw , xtxt)
+{
+var xnb;
+xcw=this.CurrentFont["cw"];
+if(xw==0)xw=this.w-(this.rMargin)-this.x;
+xwmax=((xw)-2*(this.cMargin))*1000/(this.FontSize);
+xs=lib.str_replace("\r","",xtxt);
+xnb=xs.length;
+if(xnb>0 && xs.charAt(xnb-1)=="\n")xnb--;
+xsep=-1;
+xi=0;
+xj=0;
+xl=0;
+xnl=1;
+while(xi<xnb)
+{
+xc=xs.charAt(xi);
+if(xc=="\n")
+{
+xi++;
+xsep=-1;
+xj=xi;
+xl=0;
+xnl++;
+continue;
+}
+if(xc==" ")xsep=xi;
+xl+=(xcw[xc]);
+if(xl>xwmax)
+{
+if(xsep==-1)
+{
+if(xi==xj)xi++;
+}
+else xi=xsep+1;
+xsep=-1;
+xj=xi;
+xl=0;
+xnl++;
+}
+else {xi++;}
+}
+return xnl;
+}
