@@ -82,7 +82,7 @@ ErrMsg = Request("ErrMsg")
      <strong><font color="#FF0000"><% Response.Write(ErrMsg) %></font></strong>
      <br/> <br/>
      
-      <h2> <a href="ShowStudents.asp?ID=220188">MSW Applications</a></h2> 
+      <h2> <a href="ShowStudents.asp?ID=220198">MSW Applications</a></h2> 
       <br /><br />
       <h2> <a href="ShowCurrentStudents.asp">MSW Current Students - View Only</a></h2>
       <br /><br />
