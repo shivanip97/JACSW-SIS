@@ -114,7 +114,9 @@ rs.Open query,conn
                    
                     <br/><br/><br/>
 					<label>First Name</label>
-					<input type="text" name="FirstName" required id="FirstName" value="<%Response.write rs("FirstName") %>" readonly=true/>   
+					<input type="text" name="FirstName" required id="FirstName" value="<%Response.write rs("FirstName") %>" readonly=true/>  
+                    <label>Prefered First Name</label>
+                    <input type="text" name ="PreferedFirstName" id="PreferedFirstName" value="<%Response.write rs("PreferedFirstName") %>" readonly=true/>
                     <label>Middle Name</label>
 					<input type="text" name="middlename" id="middlename" value="<%Response.write rs("middlename") %>" readonly=true/> 
                     <label>Last Name</label>
@@ -314,7 +316,9 @@ rs.Open query,conn
                    
                     <br/><br/><br/>
 					<label>First Name</label>
-					<input type="text" name="FirstName" required id="FirstName" value="<%Response.write rs("FirstName") %>" readonly=true/>   
+					<input type="text" name="FirstName" required id="FirstName" value="<%Response.write rs("FirstName") %>" readonly=true/>
+                    <label>Prefered First Name</label>
+                    <input type="text" name ="PreferedFirstName" id="PreferedFirstName" value="<%Response.write rs("PreferedFirstName") %>" readonly=true/>    
                     <label>Middle Name</label>
 					<input type="text" name="middlename" id="middlename" value="<%Response.write rs("middlename") %>" readonly=true/> 
                     <label>Last Name</label>

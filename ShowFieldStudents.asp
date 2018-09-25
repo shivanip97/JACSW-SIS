@@ -83,7 +83,8 @@ ErrMsg = Request("ErrMsg")
              <th align="center">UIN</th>
             <th align="center">Last Name</th>
             <th align="center">First Name</th>
-            <th align="center">Middle Name</th> 
+            <th align="center">Prefered First Name</th>
+            <!-- <th align="center">Middle Name</th> --> 
             <th align="center">Email</th>
             <th align="center">Home Phone</th>
             
@@ -104,8 +105,8 @@ ErrMsg = Request("ErrMsg")
             <td align="center"><div> <% Response.write rs("UIN") %></div></td>
             <td align="center"><div class="edit" id="<%= uin%> LastName"> <% Response.write rs("LastName") %></div></td>
 			<td align="center"><div class="edit" id="<%= uin%> FirstName"><% Response.write rs("FirstName") %></div></td>
-            <td align="center"><div class="edit" id="<%= uin%> MiddleName"> <% Response.write rs("MiddleName") %></div></td>
-            
+            <!-- <td align="center"><div class="edit" id="<%= uin%> MiddleName"> <% Response.write rs("MiddleName") %></div></td> -->
+            <td align="center"><div class="edit" id="<%= uin%> PreferedFirstName"><% Response.write rs("PreferedFirstName") %></div></td>
             <td align="center"><div class="edit" id="<%= uin%> email"> <% Response.write rs("email") %></div></td>
             <td align="center"><div class="edit" id="<%= uin%> HomePhone"> <% Response.write rs("HomePhone") %></div></td>
 
