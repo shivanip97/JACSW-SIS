@@ -60,7 +60,7 @@ rs.Open query,conn
 					<input type="text" name="uin" readonly ="true" required id="uin" value='<%Response.write rs("UIN") %>'/>
                         <%
                     set rs1=Server.CreateObject("ADODB.recordset")
-					course_query3="select FirstName, LastName,ProgramType from CurrentStudents where UIN = '"& UIN & "'"
+					course_query3="select PreferedFirstName, LastName,ProgramType from CurrentStudents where UIN = '"& UIN & "'"
 					rs1.Open course_query3,conn
                     If not rs1.EOF Then
                     %>
@@ -68,7 +68,7 @@ rs.Open query,conn
 					<input type="text" name="programtype" readonly ="true" required id="programtype" readonly ="true" value='<%Response.write rs1("ProgramType") %>'/>   
                     
                             <label>Name</label>
-					<input type="text" name="name" required id="name" readonly ="true" value='<% Response.Write rs1("FirstName") %> &nbsp <% Response.Write rs1("LastName") %>'/>
+					<input type="text" name="name" required id="name" readonly ="true" value='<% Response.Write rs1("PreferedFirstName") %> &nbsp <% Response.Write rs1("LastName") %>'/>
             
                   <% End If %>     
                    
